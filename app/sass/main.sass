@@ -1,0 +1,282 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: rgba(0,0,0,.25)
+	border-color: rgba(0,0,0,.25)
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+	&.ishome
+		.site-header
+			min-height: 700px
+			height: 100vh
+			background-color: $dark
+			color: #fff
+			.top-line
+				padding-top: 40px
+				position: absolute //Чтобы телефон можно было разместить справа
+				width: 100% //Абсолютные элементы становятся инлайновыми
+				z-index: 1
+
+section, header
+	position: relative
+	background-size: cover
+	background-position: center
+
+section
+	background-color: #fff
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.h1, .h2, .h3, h4, .h5, .h6
+	line-height: 1.4
+	text-transform: uppercase
+
+//BUTTON
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 16px 45px
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+
+.soc
+	margin: auto
+	ul, li
+		margin: 0
+		padding: 0
+		list-style-type: none
+	a
+		color: #2c2c2c
+		font-size: 17px
+		display: block
+		background-color: rgba(#fff, .2)
+		border-radius: 50%
+		height: 38px
+		width: 38px
+		text-align: center
+		margin: 18px 0
+		line-height: 38px
+		transition: background-color .25s ease
+		&:hover
+			background-color: rgba(#fff, .4)
+
+//HEADER
+
+.logo
+	img
+		width: 125px
+		height: auto //Для нормального отображения svg на стрых айфонах
+		margin-left: 45px
+
+.phone
+	position: absolute
+	right: 85px
+	top: 44px
+	font-family: firasans, sans-serif
+	font-size: 22px
+	white-space: nowrap //Чтобы не переносился на другую строку на мобилках
+	.fa
+		color: #555
+		margin-right: 8px
+
+.hamburger
+	position: absolute
+	right: 0
+	top: 34px
+	.hamburger-box
+		width: 34px
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+	border-radius: 0
+	width: 34px
+	height: 2px
+	background-color: #fff
+
+.mm-navbar 
+	margin-top: 20px
+	border: none
+	.mm-title img
+		width: 128px
+		height: auto
+
+html.mm-opened //Чтобы не перезагружался скролл при открытии меню
+	overflow-y: scroll
+.mm-panels > .mm-panel.mm-hasnavbar
+	right: -18px 
+
+.mm-panels>.mm-panel>.mm-listview:first-child, .mm-panels>.mm-panel>.mm-navbar+.mm-listview
+	margin-top: 20px
+.mm-listview>li:not(.mm-divider):after
+	display: none
+
+.mm-menu.mm-theme-black .mm-listview>li.mm-selected>a:not(.mm-next), .mm-menu.mm-theme-black .mm-listview>li.mm-selected>span
+	background-color: transparent
+	color: $accent
+
+.mm-listview 
+	> li
+		> a
+			padding-left: 14%
+			padding-right: 14%
+			top: 8px
+			transition: color .25s ease
+			&:hover
+				color: $accent
+				&::before
+					color: $accent
+
+			&::before
+				content: '\f219'
+				font-family: fontawesome
+				font-size: 12px
+				margin-right: 8px
+				color: #fff
+				transition: color .25s ease
+		&.active
+			&>a
+				color: $accent
+
+.header-flex
+	display: flex
+	height: 100%
+	position: relative
+	top: 0
+
+.flex-center
+	margin: auto
+
+.header-composition
+	text-align: center
+	position: relative
+	p
+		margin-top: 40px
+	.button
+		margin-top: 25px
+
+.welcome
+	p
+		font-size: 14px
+		text-transform: uppercase
+		display: flex
+		align-items: center
+		white-space: nowrap
+		margin: 0
+		margin-bottom: -10px
+		span
+			margin: 0 10px
+		&::before, &::after
+			content: ''
+			height: 1px
+			width: 100%
+			position: relative
+			background-color: #fff
+			display: inline-block
+	.h1
+		font-weight: 100
+		font-size: 70px
+		margin: 0
+		line-height: 1.6
+		border-bottom: 1px solid #fff
+		white-space: nowrap
+	strong
+		display: block
+		font-size: 17px
+		text-transform: uppercase
+		margin-top: 25px
+		.fa
+			margin-right: 10px
+			font-size: 12px
+			color: #555
+			&:last-child
+				margin-right: inherit
+				margin-left: 10px
+
+.header-social
+	position: absolute
+	display: flex
+	height: 100%
+	border-left: 1px solid rgba(#fff, .1)
+	top: 0
+	right: 0
+	padding: 0 12.5px
+
+.header-contacts
+	position: absolute
+	bottom: 0
+	left: 0
+	border-top: 1px solid rgba(#fff, .15)
+	padding: 12.5px 0
+	width: 100%
+	background-color: rgba(#151515, .15)
+	.fa
+		margin-right: 5px
+		color: #555
+	.phone-h
+		font-family: firasans, sans-serif
+		text-align: center
+
+@import "media" // Всегда в конце
