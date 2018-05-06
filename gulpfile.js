@@ -44,14 +44,22 @@ var paths = {
     vendor: {
       css: {
         src: [
-          './app/libs/normalize.css/normalize.css'
+          './app/libs/bootstrap-grid/bootstrap-grid.css',
+          './app/libs/fontawesome/font-awesome.min.css',
+          './app/libs/mmenu/css/jquery.mmenu.all.css',
+          './app/libs/css-hamburgers/hamburgers.css',
+          './app/libs/owl.carousel/dist/assets/owl.carousel.min.css',
+          './app/libs/fotorama/fotorama.css'
         ],
         dest: './app/css'
       },
       js: {
         src: [
           './app/libs/jquery/dist/jquery.min.js',
-          './app/libs/mmenu/js/jquery.mmenu.all.min.js'
+          './app/libs/mmenu/js/jquery.mmenu.all.min.js',
+          './app/libs/owl.carousel/dist/owl.carousel.min.js',
+          './app/libs/equalHeights/equalheights.js',
+          './app/libs/fotorama/fotorama.js'
         ],
         dest: './app/js/min'
       },
