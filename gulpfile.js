@@ -49,7 +49,8 @@ var paths = {
           './app/libs/mmenu/css/jquery.mmenu.all.css',
           './app/libs/css-hamburgers/hamburgers.css',
           './app/libs/owl.carousel/dist/assets/owl.carousel.min.css',
-          './app/libs/fotorama/fotorama.css'
+          './app/libs/fotorama/fotorama.css',
+          './app/libs/selectize/css/selectize.css'
         ],
         dest: './app/css'
       },
@@ -59,7 +60,8 @@ var paths = {
           './app/libs/mmenu/js/jquery.mmenu.all.min.js',
           './app/libs/owl.carousel/dist/owl.carousel.min.js',
           './app/libs/equalHeights/equalheights.js',
-          './app/libs/fotorama/fotorama.js'
+          './app/libs/fotorama/fotorama.js',
+          './app/libs/selectize/js/standalone/selectize.min.js'
         ],
         dest: './app/js/min'
       },

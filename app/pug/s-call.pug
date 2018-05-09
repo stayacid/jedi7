@@ -1,0 +1,28 @@
+section.s-call.inverse(style="background-image: url(../img/madama.jpg)")
+    .container
+        .row
+            .col-md-5.col-md-offset-7.col-sm-6.col-sm-offset-6
+                form.callback
+                    .success
+                        span Спасибо за заявку!
+                    // Hidden Required Fields
+                    input(type='hidden', name='project_name', value='Smitler')
+                    input(type='hidden', name='admin_email', value='stayacid@gmail.com')
+                    input(type='hidden', name='form_subject', value='Заявка с сайта Smitler')
+                    input(type='hidden', name='page', value='')
+                    // END Hidden Required Fields
+
+                    .callback-logo
+                        img(src="../img/logo-2.svg", alt="Smitler - салон красоты в Москве")
+                    .formhead.h2 Оставить заявку
+                    p Оставьте заявку и мы перезвоним вам в течение 15 минут.
+
+                    input(type="text" name="Имя" placeholder="Ваше имя..." required)
+                    input(type="text" name="Телефон" placeholder="Ваш телефон..." required)
+                    select(name="Услуга")
+                        option Парикмахерский сервис
+                        option Косметологический сервис
+                        option Маникюрный сервис
+                        option Массаж и SPA
+                        option Солярий
+                    button.button.button-white Отправить
