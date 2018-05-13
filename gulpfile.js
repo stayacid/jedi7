@@ -13,7 +13,10 @@ var gulp = require('gulp'), // Gulp
     pug = require('gulp-pug'), // Pug
     rename = require('gulp-rename'), // Переименование файлов (files rename)
     sass = require('gulp-sass'), // sass
-    uglify = require('gulp-uglify'); // Минификация JS-файлов (minification of JS files)
+    uglify = require('gulp-uglify'), // Минификация JS-файлов (minification of JS files)
+    sftp = require('gulp-sftp'),
+    ftp = require('vinyl-ftp'),
+    gutil = require('gulp-util'); 
 
 // Задание путей к используемым файлам и папкам (paths to folders and files):
 var paths = {
@@ -207,6 +210,34 @@ gulp.task('dist', function () {
   var fontsDist = gulp.src(paths.dist.fonts.src)
       .pipe(gulp.dest(paths.dist.fonts.dest));
   return htmlDist, cssDist, jsDist, fontsDist;
+});
+
+//gulp.task('deploy', function () {
+//  return gulp.src('dist/**/*')
+//      .pipe(sftp({
+//          host: 's29.webhost1.ru',
+//          port: 21,
+//          auth: 'keyMain',
+//          remotePath: '/ivanzagainov/subs/smitler'
+//      }));
+//});
+
+gulp.task('deploy', function() {
+
+	var conn = ftp.create({
+		host:      's29.webhost1.ru',
+		user:      'login',
+		password:  'pass',
+		parallel:  10,
+		log: gutil.log
+	});
+
+	var globs = [
+	'dist/**'
+	];
+	return gulp.src(globs, {buffer: false})
+	.pipe(conn.dest('/ivanzagainov/subs/smitler'));
+
 });
 
 // Таск для сборки (build task):
