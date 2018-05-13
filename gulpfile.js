@@ -91,7 +91,7 @@ var paths = {
       dest: './dist/js'
     },
     fonts: {
-      src: './app/fonts/*.*',
+      src: './app/fonts/**/*.*',
       dest: './dist/fonts'
     }
   }

@@ -131,6 +131,57 @@ section
 		&:hover
 			background-color: rgba(#fff, .4)
 
+.text-center
+	text-align: center
+
+@mixin opacity($opacity)
+	opacity: $opacity / 100
+	filter: alpha(opacity = $opacity)
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 100
+	background-color: $dark
+	.pulse
+		position: relative
+		left: 50%
+		top: 50vh
+		margin: 
+			left: -40px
+			top: -40px
+		&:before, &:after
+			content: ''
+			border: 5px solid #323232
+			width: 80px
+			height: 80px
+			border-radius: 50%
+			position: absolute
+		&:before
+			animation: pulse-outer 1s ease-in infinite
+		&:after
+			animation: pulse-inner 1s linear infinite
+
+@keyframes pulse-outer
+	0%
+		@include opacity(100)
+	50%
+		@include opacity(50)
+	100%
+		@include opacity(0)
+
+@keyframes pulse-inner
+	0%
+		@include opacity(0)
+		transform: scale(0)
+	100%
+		@include opacity(100)
+		transform: scale(1)
+
+
 //HEADER
 
 .logo
@@ -382,6 +433,12 @@ $colors: $blue, $red, $accent
 		p
 			margin: 30px 0
 			font-size: 18px
+	&-partners.section-overlay
+		&::before
+			background-color: #fff
+		.h2
+			color: $accent
+			margin-top: 0
 
 .section-overlay
 	&::before
@@ -391,7 +448,8 @@ $colors: $blue, $red, $accent
 		left: 0
 		width: 100%
 		height: 100%
-		background-color: rgba($over, .92)
+		background-color: #3d3c3c
+		opacity: .92
 
 //FOTORAMA
 section.inverse
@@ -450,7 +508,8 @@ section.inverse
 		background-color: rgba($accent, .92)
 
 //All inputs
-input, textarea, select
+input, textarea, select, .selectize-control.single .selectize-input.input-active, .selectize-input,
+.callback .selectize-input
 	background-color: transparent
 	border: 1px solid rgba(#000, .1)
 	border-bottom: 2px solid rgba(#000, .1)
@@ -461,7 +520,39 @@ input, textarea, select
 	font-size: 16px
 	color: #333
 select
-	padding: 10px 22px
+	padding: 11px 22px
+
+.selectize-control .selectize-input
+	box-shadow: none
+	overflow: inherit
+	line-height: inherit
+	text-align: left
+	input
+		font-size: inherit
+	&.dropdown-active::before
+		background-color: transparent
+
+.selectize-control.single
+	.selectize-input, &.dropdown-active
+		&::after
+			border: none
+			content: '\f107'
+			font-family: fontawesome
+			position: absolute
+			right: 30px
+			top: 12px
+		&.dropdown-active::after
+			content: '\f106'
+	.selectize-dropdown
+		font-size: 15px
+		border: none
+		border-radius: 0
+		text-align: left
+		&-content
+			.option
+				padding: 10px 22px
+				&.active
+					background-color: lighten($accent, 20)
 
 .success
 	display: none
@@ -485,7 +576,6 @@ select
 .callback
 	padding: 25% 0
 	position: relative
-	c
 
 	&-logo
 		img
@@ -500,7 +590,7 @@ select
 		p
 			margin-top: 0
 	
-	input, textarea, select
+	input, textarea, select, .selectize-control.single .selectize-input.input-active, .selectize-input
 		color: #fff
 		width: 100%
 		margin-top: 17px
@@ -519,6 +609,220 @@ select
 	.button
 		margin-top: 40px
 
+//REVIEWS
+.reviews
+	text-align: center
+
+.review
+	margin-top: 20px
+	&-header
+		font-family: 'Times New Roman', serif
+		font-style: italic
+		font-size: 30px
+		font-weight: bold
+	&-date
+		font-family: 'Times New Roman', serif
+		font-style: italic
+		font-size: 15px
+		color: #888
+	&-stars
+		margin: 18px 0 30px
+		font-size: 14px
+		color: $accent
+		.fa
+			margin: 0 2.5px
+	&-text
+		color: #95989a
+
+.owl-dots
+	width: 100%
+	text-align: center
+	margin-top: 60px
+	button.owl-dot
+		width: 8px
+		height: 8px
+		background-color: #fff
+		border-radius: 50%
+		display: inline-block
+		margin: 5px
+		outline: none
+		transition: background-color .5s ease, transform .5s ease
+		&.active
+			background-color: $accent
+			transform: scale(1.4)
+	
+.quotes
+	position: absolute
+	width: 100%
+	&::after, &::before
+		content: ',,'
+		position: absolute
+		font-size: 56px
+		color: $accent
+		font-family: 'Times New Roman', serif
+		font-weight: bold
+		line-height: 0
+		transform: rotate(180deg)
+		display: block
+		top: 182px
+	&::before
+		top: 220px
+		left: -60px
+	&::after
+		right: -60px
+		transform: rotate(0)
+
+//PARTNERS
+.partners
+	.partner
+		height: 100%
+		display: flex
+		margin: auto
+	.owl-stage
+		display: flex
+		.owl-item
+			margin-top: 30px
+			img
+				max-width: 100%
+				width: auto
+				display: inline-block
+				margin: auto
+	.owl-nav
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 2
+		> button
+			position: absolute
+			top: 50px
+			color: #999
+			transition: opacity .5s ease
+			&:hover
+				opacity: .6
+			&.owl-prev
+				left: -60px
+			&.owl-next
+				right: -60px
+			> i
+				font-size: 30px
+				padding: 0 10px
+
+//FOOTER
+.main-footer
+	background-color: #242424
+	padding: 3% 0
+	color: #fff
+	font-size: 14px
+
+.footer-column
+	margin: 15px 0
+
+.logo-footer
+	width: 125px
+	height: auto
+	+ p
+		color: #666
+		padding: 0
+		margin:
+			bottom: 15px
+			top: 15px
+		font-size: 14px
+
+.footer-social
+	margin-top: 38px
+	.soc
+		li
+			display: inline-block
+			margin: 3px
+			a
+				color: #ababab
+				margin-bottom: 0
+				transition: color .5s ease, background-color .5 ease
+				&:hover
+					color: rgba(#fff, .8)
+
+.footer-menu
+	ul
+		padding: 0
+		margin: 0
+		list-style-type: none
+		li.active
+			a
+				color: $accent
+				&::before
+					color: $accent
+		a
+			color: #979797
+			transition: color .5 ease
+			display: inline-block
+			padding: 4px 0
+			padding-left: 20px
+			position: relative
+			&:hover, &:focus
+				color: $accent
+				&::before
+					color: $accent
+			&::before
+				position: absolute
+				font-family: fontawesome
+				content: '\f219'
+				left: 0
+				font-size: 12px
+				color: #fff
+				transition: color .5s ease
+				top: 6px
+
+.footer-addr
+	position: relative
+	font-size: 15px
+	padding-left: 24px
+	margin: 0 0 20px
+	.fa
+		position: absolute
+		left: 0
+		top: 5px
+		font-size: 18px
+		color: #555
+	.footer-phone
+		font-size: 26px
+		font-family: firasans, sans-serif
+		display: block
+		white-space: nowrap
+		.fa
+			top: 10px
+			font-size: 22px
+			left: 4px
+
+.map
+	max-height: 200px
+	opacity: .7
+	transition: opacity .5s ease
+	&:hover
+		opacity: 1
+
+//GO TO TOP
+.top
+	position: fixed
+	bottom: 25px
+	right: -100px
+	background-color: #e0e0e0
+	z-index: 12
+	border-radius: 50%
+	color: #666
+	font-size: 26px
+	height: 50px
+	width: 50px
+	text-align: center
+	line-height: 50px
+	cursor: pointer
+	transition: all .3s ease
+	opacity: 0.5
+	&:hover
+		color: #fff
+		background-color: $accent
+		opacity: 1
+	&.active
+		right: 25px
 
 
 

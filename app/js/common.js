@@ -31,13 +31,13 @@ $(function () {
         responsiveClass: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
             },
             800: {
-                items: 2
+                items: 2,
             },
             1100: {
-                items: 3
+                items: 3,
             }
         }
     });
@@ -69,9 +69,53 @@ $(function () {
     }onResize();
     window.onresize = function() {onResize()};
 
-/*     $('select').selectize({
+    $('select').selectize({
         create: true
-    }); */
+    });
+    
+    $('.reviews').owlCarousel({
+        loop: true,
+        items: 1,
+        smartSpeed: 700,
+        nav: false,
+        autoHeight: true
+    });
+
+    $('.partners').owlCarousel({
+        dots: false,
+        loop: true,
+        nav: true,
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        responsiveClass: true,
+        smartSpeed: 700,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 2,
+            },
+            992: {
+                items: 3,
+            },
+            1200: {
+                items: 4,
+            }
+        }
+    });
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > $(this).height()) {
+            $('.top').addClass('active');
+        } else {
+            $('.top').removeClass('active');
+        }
+    });
+
+    $('.top').click(function() {
+        $('html, body').stop().animate({scrollTop: 0}, 'slow', 'swing');
+    });
+
 
     $("form.callback").submit(function() { //Change
 		var th = $(this);
@@ -88,7 +132,11 @@ $(function () {
 			}, 3000);
 		});
 		return false;
-	});
+    });
+    
+    $(window).on('load', function() {
+        $('.preloader').delay(1000).fadeOut('slow');
+    });
     
 });
 

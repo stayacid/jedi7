@@ -24,13 +24,20 @@ html(lang="en")
         <style>body { opacity: 0; overflow-x: hidden; } html { background-color: #151515; }</style>
 
     body.ishome
+        .preloader
+            .pulse
         #my-page
             include header.pug
             #my-content
                 include carousel.pug
                 include s-king.pug
                 include s-call.pug
+                include s-review.pug
+                include s-partners.pug
             #my-footer
+                include footer.pug
+        .top(title='Наверх')
+            i.fa.fa-angle-double-up
 
         link(rel="stylesheet", href="../css/vendor.min.css")
         link(rel="stylesheet", href="../css/main.min.css")
